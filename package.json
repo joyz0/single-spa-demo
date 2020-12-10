@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "create:root": "lerna exec --scope root-config -- npx create-single-spa --module-type root-config",
+    "create:app": "lerna exec --scope react-app -- npx create-single-spa --framework react"
+  },
+  "devDependencies": {
+    "lerna": "^3.20.1"
+  }
+}
