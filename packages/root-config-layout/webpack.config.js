@@ -6,7 +6,7 @@ module.exports = (webpackConfigEnv, argv) => {
   const orgName = "zhuzy-mf";
   const defaultConfig = singleSpaDefaults({
     orgName,
-    projectName: "root-config",
+    projectName: "root-config-layout",
     webpackConfigEnv,
     argv,
   });

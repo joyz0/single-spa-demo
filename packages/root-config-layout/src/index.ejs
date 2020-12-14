@@ -17,7 +17,9 @@
     This CSP allows any SSL-enabled host, but you should limit these directives further to increase your app's security.
     Learn more about CSP policies at https://content-security-policy.com/#directive
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
+  <% if (!isLocal) { %>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
+  <% } %>
   <meta name="importmap-type" content="systemjs-importmap" />
   <!-- If you wish to turn off import-map-overrides for specific environments (prod), uncomment the line below -->
   <!-- More info at https://github.com/joeldenning/import-map-overrides/blob/master/docs/configuration.md#domain-list -->
@@ -35,8 +37,42 @@
     {
       "imports": {
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.5/lib/system/single-spa.min.js",
-        "react": "https://cdn.jsdelivr.net/npm/react@16.13.0/umd/react.production.min.js",
-        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.0/umd/react-dom.production.min.js"
+        "react": "https://cdn.jsdelivr.net/npm/react@17.0.1/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.1/umd/react-dom.production.min.js",
+        "rxjs": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs@6.6.3/system/es2015/rxjs.min.js",
+        "rxjs/operators": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs@6.6.3/system/es2015/rxjs-operators.min.js",
+        "@react-mf/styleguide": "https://react.microfrontends.app/styleguide/64b2c715165299efaa799ec377824bb2766bd70f/react-mf-styleguide.js",
+        "@react-mf/root-config": "https://react.microfrontends.app/root-config/5029372b482f81f4ad50804ab051875148c3bcdc/react-mf-root-config.js",
+        "@react-mf/navbar": "https://react.microfrontends.app/navbar/5df1605952f410040a3b8b9eea148a744aba0174/react-mf-navbar.js",
+        "@react-mf/api": "https://react.microfrontends.app/api/308e63a654edbef6c369610ac506f87b9087f9bb/react-mf-api.js",
+        "@react-mf/people": "https://react.microfrontends.app/people/1a370412cdf9d66e632c9f92d5f99806f5bea33d/react-mf-people.js",
+        "@react-mf/planets": "https://react.microfrontends.app/planets/84193f256b22112541ef6ec790f850e2cbcaf88d/react-mf-planets.js",
+        "@react-mf/things": "https://react.microfrontends.app/things/7f209a1ed9ac9690835c57a3a8eb59c17114bb1d/react-mf-things.js",
+        "@react-mf/styleguide/": "https://react.microfrontends.app/styleguide/64b2c715165299efaa799ec377824bb2766bd70f/",
+        "@react-mf/root-config/": "https://react.microfrontends.app/root-config/5029372b482f81f4ad50804ab051875148c3bcdc/",
+        "@react-mf/navbar/": "https://react.microfrontends.app/navbar/5df1605952f410040a3b8b9eea148a744aba0174/",
+        "@react-mf/api/": "https://react.microfrontends.app/api/308e63a654edbef6c369610ac506f87b9087f9bb/",
+        "@react-mf/people/": "https://react.microfrontends.app/people/1a370412cdf9d66e632c9f92d5f99806f5bea33d/",
+        "@react-mf/planets/": "https://react.microfrontends.app/planets/84193f256b22112541ef6ec790f850e2cbcaf88d/",
+        "@react-mf/things/": "https://react.microfrontends.app/things/7f209a1ed9ac9690835c57a3a8eb59c17114bb1d/"
+      }
+    }
+  </script>
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js",
+        "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.1.6/dist/vue-router.min.js",
+        "@vue-mf/root-config": "https://vue.microfrontends.app/root-config/aa2fbd12721287ee259b67ed6c06c8bc3b859655/vue-mf-root-config.js",
+        "@vue-mf/navbar": "https://vue.microfrontends.app/navbar/40c8d22bc1fbf198320f645ce20ce7e51028c8b0/js/app.js",
+        "@vue-mf/styleguide": "https://vue.microfrontends.app/styleguide/5c1eb6e639d6c53e956be6716ce93bcdf2a2f162/vue-mf-styleguide.js",
+        "@vue-mf/dogs-dashboard": "https://vue.microfrontends.app/dogs-dashboard/13d155be5eecd5ca6de30304d265cc1b684f8e19/js/app.js",
+        "@vue-mf/rate-dogs": "https://vue.microfrontends.app/rate-dogs/6ef79b4fbbc14858dbf78a650b3db08095a246f2/js/app.js",
+        "@vue-mf/root-config/": "https://vue.microfrontends.app/root-config/aa2fbd12721287ee259b67ed6c06c8bc3b859655/",
+        "@vue-mf/navbar/": "https://vue.microfrontends.app/navbar/40c8d22bc1fbf198320f645ce20ce7e51028c8b0/js/",
+        "@vue-mf/styleguide/": "https://vue.microfrontends.app/styleguide/5c1eb6e639d6c53e956be6716ce93bcdf2a2f162/",
+        "@vue-mf/dogs-dashboard/": "https://vue.microfrontends.app/dogs-dashboard/13d155be5eecd5ca6de30304d265cc1b684f8e19/js/",
+        "@vue-mf/rate-dogs/": "https://vue.microfrontends.app/rate-dogs/6ef79b4fbbc14858dbf78a650b3db08095a246f2/js/"
       }
     }
   </script>
@@ -49,10 +85,16 @@
   <script type="systemjs-importmap">
     {
       "imports": {
-        "@zhuzy-mf/react-app": "http://localhost:8080/zhuzy-react-app.js",
-        "@zhuzy-mf/vue-app": "http://localhost:8080/zhuzy-vue-app.js",
-        "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-        "@zhuzy-mf/root-config": "//localhost:9000/zhuzy-root-config.js"
+        "@zhuzy-mf/root-config-layout": "//localhost:8002/zhuzy-mf-root-config-layout.js",
+        "@zhuzy-mf/navbar": "//localhost:9001/js/app.js",
+        "@zhuzy-mf/react-app": "//localhost:9002/zhuzy-mf-react-app.js",
+        "@zhuzy-mf/vue-app": "//localhost:9003/js/app.js",
+        "@zhuzy-mf/api": "//localhost:8080/zhuzy-mf-api.js",
+        "@zhuzy-mf/root-config-layout/": "//localhost:8002/",
+        "@zhuzy-mf/navbar/": "//localhost:9001/js/",
+        "@zhuzy-mf/react-app/": "//localhost:9002/",
+        "@zhuzy-mf/vue-app/": "//localhost:9003/js/",
+        "@zhuzy-mf/api/": "//localhost:8080/"
       }
     }
   </script>
@@ -78,23 +120,46 @@
 
   <template id="single-spa-layout">
     <single-spa-router>
-      <!-- <nav>
-        <application name="@<%- orgName %>/navbar"></application>
-      </nav> -->
+      <nav>
+        <application name="@vue-mf/navbar" loader="topNav" error="topNav"></application>
+      </nav>
       <main>
-        <route default>
+        <route path="react-app">
           <application name="@zhuzy-mf/react-app"></application>
         </route>
-        <route path="vue">
+        <route path="vue-app">
           <application name="@zhuzy-mf/vue-app"></application>
         </route>
-      </main>
+        <route path="people">
+          <application name="@react-mf/people"></application>
+        </route>
+        <route path="planets">
+          <application name="@react-mf/planets"></application>
+        </route>
+        <route path="things">
+          <application name="@react-mf/things"></application>
+        </route>
+        <route path="view-doggos">
+          <application name="@vue-mf/dogs-dashboard"></application>
+        </route>
+        <route path="rate-doggos">
+          <application name="@vue-mf/rate-dogs"></application>
+        </route>
+        <route default>
+          <h1 class="flex flex-row justify-center p-16">
+            <p class="max-w-md">This example project shows independently built and deployed microfrontends that use React and single-spa. Each nav link above takes you to a different microfrontend.</p>
+          </h1>
+        </route>
+      </div>
     </single-spa-router>
+  </template>
   </template>
 </head>
 <body>
   <script>
-    System.import('@zhuzy-mf/root-config');
+    System.import('@vue-mf/styleguide');
+    System.import('@react-mf/styleguide');
+    System.import('@zhuzy-mf/root-config-layout');
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
 </body>
